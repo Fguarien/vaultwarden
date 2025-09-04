@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  vaultwarden:
+    image: vaultwarden/server:latest
+    container_name: vaultwarden
+    hostname: vaultwarden
+    restart: unless-stopped
+    env_file:
+      - /volume1/docker/vaultwarden/.env
+    volumes:
+      - /volume1/docker/vaultwarden/data:/data
+      - /volume1/docker/vaultwarden/logs:/logs
+    ports:
+      - "127.0.0.1:9443:443" # Le reverse proxy se connectera à ce port en interne
+      - "127.0.0.1:3012:3012" # Port WebSocket
+    networks:
+      - synobridge
+
+networks:
+  synobridge:
+    external: true

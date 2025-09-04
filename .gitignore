@@ -1,0 +1,9 @@
+.env
+*.log
+data/
+ssl/private.key# --- Synology & Docker ---
+@eaDir/
+.DS_Store
+docker-data/
+logs/
+# -------------------------
