@@ -7,3 +7,7 @@ ssl/private.key# --- Synology & Docker ---
 docker-data/
 logs/
 # -------------------------
+log/
+_logs/
+_archives/
+*.tmp
