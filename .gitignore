@@ -25,3 +25,27 @@ _archives/
 secrets/
 certs/
 docker-compose.override.yml
+
+# ── Artefacts macOS (ajout auto v4.4) ────────────────────
+.fseventsd/
+.Spotlight-V100/
+.Trashes/
+.DS_Store
+.AppleDouble
+._*
+.DocumentRevisions-V100/
+.TemporaryItems/
+
+# ── NFS lock files (ajout auto v4.4) ────────────────────
+.nfs*
+
+# ── PostgreSQL données internes (ajout auto v4.4) ────────
+postgres/base/
+postgres/global/
+postgres/pg_wal/
+postgres/pg_xact/
+postgres/pg_stat_tmp/
+postgres/postmaster.pid
+
+# ── Prometheus TSDB (ajout auto v4.4) ───────────────────
+prometheus/data/
