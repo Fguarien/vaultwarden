@@ -4,18 +4,25 @@ services:
     container_name: vaultwarden
     hostname: vaultwarden
     restart: always
+    security_opt:
+      - no-new-privileges:true
+    healthcheck:
+      test: ["CMD-SHELL", "curl -sf http://localhost:443/alive || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
     env_file:
-      - /Volumes/docker/vaultwarden/.env
+      - /opt/docker/vaultwarden/.env
     volumes:
-      - /Volumes/docker/vaultwarden/data:/data
-      - /Volumes/docker/vaultwarden/logs:/logs
+      - /opt/docker/vaultwarden/data:/data
+      - /opt/docker/vaultwarden/logs:/logs
     ports:
       - "9443:443" # Le reverse proxy se connectera à ce port en interne
       - "3012:3012" # Port WebSocket
     networks:
       - infrastructure_network
-    mem_limit: 12g
-    mem_reservation: 2g
+    mem_limit: 512m
     labels:
       com.centurylinklabs.watchtower.enable: "true"
     logging:
